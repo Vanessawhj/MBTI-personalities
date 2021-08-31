@@ -20,7 +20,7 @@ initial_sidebar_state="collapsed")
 
 
 
-df_all = pd.read_csv("MBTI_data.csv", encoding="iso-8859-1")
+df_all = pd.read_csv("MBTI_data.csv")
 
 # get the personality types
 mbti_lst = set()
