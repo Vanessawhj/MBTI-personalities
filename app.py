@@ -20,7 +20,7 @@ initial_sidebar_state="collapsed")
 
 
 
-df_all = pd.read_csv("/Users/huijee/Downloads/MBTI_data.csv")
+df_all = pd.read_csv("MBTI_data.csv")
 
 # get the personality types
 mbti_core = set()
@@ -49,13 +49,12 @@ def try_expander(expander_name, sidebar=False):
 st.title('The MBTI Consultant')
 with try_expander('About'):
 
-    st.markdown('''This is a Periodic Table of the 16 MBTI personalities inspired by Rob van Zoest and his creation of the Periodic Table of NLP Tasks. \
-    The motivation of this project is to help people understand their personality better. No doubt, identifying my personality type has helped me to put the \
-    pieces of my personality puzzle together. Since then, the haze became clear, so much of my life started to make sense and I hope it would be the same for you.''')
+    st.markdown('''This is a Periodic Table of the 16 MBTI personality types inspired by Rob van Zoest and his creation of the Periodic Table of NLP Tasks. \
+    The motivation of this project is to help people understand themselves better. No doubt, identifying my personality type has helped me to put the \
+    pieces of my personality puzzle together and so much of my life started to make sense since then. Hence, I hope you'll find this helpful in understanding yours too!''')
 
     st.text(" \n")
-    st.markdown("Do the test [here](https://www.16personalities.com/free-personality-test) to find out your personality type!" )
-
+    st.markdown("If you're unsure of your personality type, try out the test [here](https://www.16personalities.com/free-personality-test)!" )
 
 # set containers
 c1, c2, c3, c4 = st.beta_columns((2,0.1,1,2))
@@ -215,4 +214,4 @@ st.bokeh_chart(p)
 
 
 st.markdown('***')
-st.markdown("I hope you've enjoyed reading it as much as I did while working on this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
+st.markdown("I hope you've enjoyed reading it as much as I did creating this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
