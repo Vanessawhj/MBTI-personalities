@@ -23,11 +23,11 @@ initial_sidebar_state="collapsed")
 df_all = pd.read_csv("MBTI_data.csv")
 
 # get the personality types
-mbti_core = set()
+mbti_lst = set()
 def core(x):
     x = str(x)
     if len(x) == 4:
-        mbti_core.add(x)
+        mbti_lst.add(x)
 
     
 df_all.type.apply(lambda x: core(x))
@@ -55,13 +55,16 @@ with try_expander('About'):
 
     st.text(" \n")
     st.markdown("If you're unsure of your personality type, try out the test [here](https://www.16personalities.com/free-personality-test)!" )
+    st.text(" \n")
+    st.markdown("Disclaimer: May contain MBTI memes")
+
 
 # set containers
 c1, c2, c3, c4 = st.beta_columns((2,0.1,1,2))
 with c1:
-    base_price_unit = st.selectbox('Select MBTI type', list(mbti_core))
+    mbti_type = st.selectbox('Select MBTI type', list(mbti_lst))
 
-    title = f'{df_all[df_all["type"] == base_price_unit].category.values[0]} - {df_all[df_all["type"] == base_price_unit].personality.values[0]}'
+    title = f'{df_all[df_all["type"] == mbti_type].category.values[0]} - {df_all[df_all["type"] == mbti_type].personality.values[0]}'
     st.subheader(title)
     
 
@@ -70,13 +73,13 @@ with c3:
     plot_font = st.selectbox('Font', plot_fonts, index=0)
 
 
-path = f'/Users/huijee/Documents/MBTI_icons/{base_price_unit}.png'
+path = f'MBTI_icons/{mbti_type}.png'
 image = Image.open(path)
 st.image(image, width=300)
 
 
 # callback
-df = df_all[df_all["type"] == base_price_unit]
+df = df_all[df_all["type"] == mbti_type]
 
 df = df.rename({"ï»¿atomicnumber":"atomicnumber"}, axis=1)
 df["elementname"] = df["elementname"].str.replace('\\n', '\n', regex=False)
