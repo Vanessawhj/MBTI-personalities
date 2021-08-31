@@ -7,7 +7,7 @@ from PIL import Image
 import pandas as pd
 
 
-# to remove duplicates!
+# to remove duplicates
 from bokeh.io import curdoc
 curdoc().clear()
 
@@ -71,11 +71,6 @@ with c1:
 with c3:
     plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
     plot_font = st.selectbox('Font', plot_fonts, index=0)
-
-
-# with c4:
-#     st.image(Image.open('mbti-pairs.png'),width=30)
-
 
     
 r1, r2, r3, r4 = st.beta_columns((2,0.1,2,2))
