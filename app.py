@@ -20,7 +20,7 @@ initial_sidebar_state="collapsed")
 
 
 
-df_all = pd.read_csv("MBTI_data.csv")
+df_all = pd.read_csv("MBTI_data.csv", encoding="iso-8859-1")
 
 # get the personality types
 mbti_lst = set()
@@ -49,10 +49,10 @@ def try_expander(expander_name, sidebar=False):
 st.title('The MBTI Consultant')
 with try_expander('About'):
 
-    st.markdown('''This is a Periodic Table of the 16 MBTI personality types inspired by Rob van Zoest and his creation of the Periodic Table of NLP Tasks. \
-    The motivation of this project is to help people understand themselves better. No doubt, identifying my personality type has helped me to put the \
-    pieces of my personality puzzle together and so much of my life started to make sense since then. Hence, I hope you'll find this helpful in understanding yours too!''')
-
+    st.markdown('''This is a Periodic Table of the 16 Myers-Briggs Type Indicator (MBTI) personality types inspired by Rob van Zoest and his creation of the Periodic Table of NLP Tasks. \
+    As a MBTI fanatic, I oftentimes find the elements hugely relatable to me, thus motivated me to create this visualization. 
+    What about you? How many of these elements did you find relatable to your personality type? 
+    ''')
     st.text(" \n")
     st.markdown("If you're unsure of your personality type, try out the test [here](https://www.16personalities.com/free-personality-test)!" )
     st.text(" \n")
@@ -69,13 +69,24 @@ with c1:
     
 
 with c3:
-    plot_fonts = ['Helvetica','Times','Arial','century gothic','Bodoni MT']
+    plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
     plot_font = st.selectbox('Font', plot_fonts, index=0)
 
 
-path = f'MBTI_icons/{mbti_type}.png'
-image = Image.open(path)
-st.image(image, width=300)
+# with c4:
+#     st.image(Image.open('mbti-pairs.png'),width=30)
+
+
+    
+r1, r2, r3, r4 = st.beta_columns((2,0.1,2,2))
+with r1: 
+    path = f'MBTI_icons/{mbti_type}.png'
+    image = Image.open(path)
+    st.image(image, width=300)
+
+with r4:
+    st.image(Image.open('mbti-pairs.png'),width=500)
+
 
 
 # callback
@@ -84,7 +95,7 @@ df = df_all[df_all["type"] == mbti_type]
 df = df.rename({"ï»¿atomicnumber":"atomicnumber"}, axis=1)
 df["elementname"] = df["elementname"].str.replace('\\n', '\n', regex=False)
 df["groupname"] = df["groupname"].str.replace('\\n', ' ', regex=False)
-df["exercpt"] = df["excerpt"].str.replace('\\n', ' ', regex=False)
+df["excerpt"] = df["excerpt"].str.replace('\\n', '\n', regex=False)
 
 df_group = pd.pivot_table(df, values='atomicnumber', index=['group','groupname'], 
                         columns=[], aggfunc=pd.Series.nunique).reset_index()
