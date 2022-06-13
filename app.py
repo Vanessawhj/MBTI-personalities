@@ -5,9 +5,7 @@ from bokeh.transform import dodge, factor_cmap
 import streamlit as st
 from PIL import Image
 import pandas as pd
-from jinja2.utils import markupsafe 
-markupsafe.Markup()
-Markup('')
+
 
 # to remove duplicates
 from bokeh.io import curdoc
@@ -71,11 +69,8 @@ with c1:
     
 
 with c3:
-    # plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
-    plot_fonts = ['Times','Arial']
-    # plot_font = st.selectbox('Font', ('Times','Arial'), index=0)
+    plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
     plot_font = st.selectbox('Font', plot_fonts, index=0)
-    # plot_font = 'Times'
 
     
 r1, r2, r3, r4 = st.columns((2,0.1,2,2))
@@ -227,5 +222,5 @@ p.toolbar.autohide = True
 st.bokeh_chart(p)
 
 
-# st.markdown('***')
-# st.markdown("I hope you've enjoyed reading it as much as I did creating this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
+st.markdown('***')
+st.markdown("I hope you've enjoyed reading it as much as I did creating this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
