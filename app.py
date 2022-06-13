@@ -12,7 +12,7 @@ from bokeh.io import curdoc
 curdoc().clear()
 
 
-st.beta_set_page_config(
+st.set_page_config(
 page_title="The MBTI Consultant",
 page_icon="🔍",
 layout="wide",
@@ -38,12 +38,12 @@ def try_expander(expander_name, sidebar=False):
         try:
             return st.sidebar.expander(expander_name)
         except:
-            return st.sidebar.beta_expander(expander_name)
+            return st.sidebar.expander(expander_name)
     else:
         try:
             return st.expander(expander_name)
         except:
-            return st.beta_expander(expander_name)
+            return st.expander(expander_name)
 
 
 st.title('The MBTI Consultant')
@@ -60,7 +60,7 @@ with try_expander('About'):
 
 
 # set containers
-c1, c2, c3, c4 = st.beta_columns((2,0.1,1,2))
+c1, c2, c3, c4 = st.columns((2,0.1,1,2))
 with c1:
     mbti_type = st.selectbox('Select MBTI type', list(mbti_lst))
 
@@ -69,11 +69,14 @@ with c1:
     
 
 with c3:
-    plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
+    # plot_fonts = ['Helvetica','Times','Arial','Century Gothic','Bodoni MT']
+    plot_fonts = ['Times','Arial']
+    # plot_font = st.selectbox('Font', ('Times','Arial'), index=0)
     plot_font = st.selectbox('Font', plot_fonts, index=0)
+    # plot_font = 'Times'
 
     
-r1, r2, r3, r4 = st.beta_columns((2,0.1,2,2))
+r1, r2, r3, r4 = st.columns((2,0.1,2,2))
 with r1: 
     path = f'MBTI_icons/{mbti_type}.png'
     image = Image.open(path)
@@ -222,5 +225,5 @@ p.toolbar.autohide = True
 st.bokeh_chart(p)
 
 
-st.markdown('***')
-st.markdown("I hope you've enjoyed reading it as much as I did creating this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
+# st.markdown('***')
+# st.markdown("I hope you've enjoyed reading it as much as I did creating this project. I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn] (https://www.linkedin.com/in/huijeewong/) :)")
