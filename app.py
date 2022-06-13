@@ -5,7 +5,9 @@ from bokeh.transform import dodge, factor_cmap
 import streamlit as st
 from PIL import Image
 import pandas as pd
-
+from jinja2.utils import markupsafe 
+markupsafe.Markup()
+Markup('')
 
 # to remove duplicates
 from bokeh.io import curdoc
