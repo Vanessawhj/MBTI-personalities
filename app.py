@@ -5,8 +5,10 @@ from bokeh.transform import dodge, factor_cmap
 import streamlit as st
 from PIL import Image
 import pandas as pd
+from markupsafe import Markup
 
 
+from markupsafe import Markup
 # to remove duplicates
 from bokeh.io import curdoc
 curdoc().clear()
